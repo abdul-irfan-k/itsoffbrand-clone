@@ -14,7 +14,7 @@ const Homepage = () => {
       {/* <Canvas /> */}
       <Hero />
       <div className="block h-[150vh] w-screen bg-[#1d1d1d]"></div>
-      {/* <ProjectContainer /> */}
+      <ProjectContainer />
 
       <div className="block h-screen w-screen bg-[#1d1d1d]"></div>
     </div>
