@@ -14,8 +14,8 @@ const Homepage = () => {
       {/* <ThreeScreen /> */}
       {/* <Canvas /> */}
       <Hero />
-      <div className="relative block h-[150vh] w-screen bg-[#1d1d1d] mix-blend-screen"></div>
-      {/* <ProjectContainer /> */}
+      {/* <div className="relative block h-[150vh] w-screen bg-[#1d1d1d] mix-blend-screen"></div> */}
+      <ProjectContainer />
 
      <Detail />
 

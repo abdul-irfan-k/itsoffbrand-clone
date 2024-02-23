@@ -16,7 +16,7 @@ const ProjectContainer = () => {
   const containerZTransform = useTransform(
     scrollYProgress,
     [0, 1],
-    [1500, 6000]
+    [1500, 4000]
   );
 
   const paragraphTranslate = useTransform(
