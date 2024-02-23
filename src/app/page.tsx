@@ -11,10 +11,10 @@ const Homepage = () => {
       {/* <h1>three js </h1> */}
       {/* <ThreeScreen /> */}
       {/* <Canvas /> */}
-      <div className="block h-[150vh] w-screen bg-neutral-700"></div>
+      <div className="block h-[150vh] w-screen bg-[#1d1d1d]"></div>
       <ProjectContainer />
 
-      <div className="block h-screen w-screen bg-neutral-700"></div>
+      <div className="block h-screen w-screen bg-[#1d1d1d]"></div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import Video from "../Shared/Video";
-import { useScroll, motion, useTransform } from "framer-motion";
+import { useScroll, motion, useTransform, useSpring } from "framer-motion";
 
 const projects: Array<project> = [
   { url: "OFF_siteclips_2.mp4" },
@@ -52,7 +52,6 @@ const projects: Array<project> = [
   { url: "OFF_siteclips_13.mp4" },
   { url: "OFF_siteclips_14.mp4" },
   { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
 ];
 // translate(-24.0408%, -72.7957%) translate3d(0px, 0px, -3770.78px) rotateX(-36.835deg)
 
@@ -60,10 +59,12 @@ const ProjectContainer = () => {
   const container = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start end", "end end"],
+    offset: ["start 0.9", "end end"],
+    smooth: 10,
   });
 
   const containerScale = useTransform(scrollYProgress, [0, 1], [0.9, 0.7]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [0.5, 2]);
   const containerZTransform = useTransform(
     scrollYProgress,
     [0, 1],
@@ -72,67 +73,68 @@ const ProjectContainer = () => {
 
   const translateRightSpeed3 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.2],
     ["20%", "180%"]
   );
   const translateRightSpeed2 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-20%", "90%"]
   );
   const translateRightSpeed1 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.4],
     ["30%", "80%"]
   );
 
   const translateLeftSpeed3 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-20%", "-180%"]
   );
   const translateLeftSpeed2 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["20%", "-90%"]
   );
   const translateLeftSpeed1 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-30%", "-80%"]
   );
 
   const translateTopSpeed1 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-9%", "-80%"]
   );
   const translateTopSpeed2 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-0%", "-110%"]
   );
   const translateTopSpeed3 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.3],
     ["-20%", "-140%"]
   );
   const translateBottomSpeed1 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0.4, 0.5],
     ["9%", "80%"]
   );
   const translateBottomSpeed2 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0.4, 0.5],
     ["0%", "110%"]
   );
   const translateBottomSpeed3 = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0.4, 0.5],
     ["20%", "140%"]
   );
 
+  const rotateX = useTransform(scrollYProgress, [0, 0.3], [-37, -11]);
   const trans = [
     { z: "-1176.66", x: translateRightSpeed1, y: translateTopSpeed2 },
     { z: "-3944.67", x: translateBottomSpeed1, y: translateTopSpeed1 },
@@ -184,14 +186,18 @@ const ProjectContainer = () => {
     { z: "-4679.52", x: translateRightSpeed1, y: translateBottomSpeed1 },
   ];
 
+  const temaptlate = (val: Object) => {
+    //@ts-ignore
+    return `translateX(${val.translateX}) translateY(${val.translateY}) translate3D(0,0,${val.translateZ}px) rotateX(${val.rotateX}) `;
+  };
   return (
     <div
-      className="relative w-screen h-[200vh] bg-black text-slate-50 flex  items-start "
+      className="relative w-screen h-[300vh] bg-[#1d1d1d] text-slate-50 flex  items-start  "
       ref={container}
       style={{ position: "relative" }}
     >
       <div
-        className="sticky top-[50vh]  mx-auto"
+        className="sticky top-[1vh]  mx-auto w-full "
         style={{
           width: "40vw",
           perspective: "4000px",
@@ -201,8 +207,8 @@ const ProjectContainer = () => {
           className="relative grid grid-cols-8 gap-[1.25rem] "
           style={{
             scale: containerScale,
-            //   transform: " translate3d(0px, 0px, 1841.58px) ",
             translateZ: containerZTransform,
+            perspective: "4000px",
           }}
         >
           {projects.map((project, index) => {
@@ -213,16 +219,20 @@ const ProjectContainer = () => {
                   // transform: trans[index],
                   height: "5em",
                   aspectRatio: "14/9",
-                  translateZ: trans[index].z,
                   translateX: trans[index].x,
                   translateY: trans[index].y,
+                  translateZ: trans[index].z,
+                  rotateX,
+                  opacity,
                 }}
+                transformTemplate={temaptlate}
+                className="rounded-lg overflow-hidden opacity-[0.5]"
               >
                 <Video
                   src={"/Asset/Video/" + project.url}
-                  autoPlay
-                  muted
-                  loop
+                  // autoPlay
+                  // muted
+                  // loop
                 />
               </motion.div>
             );
