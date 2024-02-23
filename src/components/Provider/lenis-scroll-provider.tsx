@@ -2,10 +2,13 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import { useFrame } from "@studio-freight/hamo";
+import gsap from "gsap";
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const lenisContext = createContext<Lenis | undefined>(undefined);
 export const useLenisScrollContext = (): Lenis | undefined =>
-  useContext(lenisContext);
+useContext(lenisContext);
+gsap.registerPlugin(ScrollTrigger)
 
 const SmothScrollScrollProvider = ({
   children,
@@ -34,6 +37,9 @@ const SmothScrollScrollProvider = ({
     lenis.raf(time);
   });
 
+
+  useEffect(() => {
+  },[])
   return (
     <>
       <lenisContext.Provider value={lenis}>{children}</lenisContext.Provider>
