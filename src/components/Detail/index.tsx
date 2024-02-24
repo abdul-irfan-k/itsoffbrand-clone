@@ -44,6 +44,11 @@ const Detail = () => {
     [0.92, 0.95],
     ["0%", "100%"]
   );
+  const { scrollYProgress: progressForBackground } = useScroll({
+    target: detailContainerRef,
+    offset: ["end 0.5", "end start"],
+  });
+  const backgroundScale = useTransform(progressForBackground, [0.1, 0.9], [1, 0.95]);
 
   return (
     <div
@@ -91,7 +96,8 @@ const Detail = () => {
               backgroundImage:
                 "linear-gradient(  255deg,  #facb0e,  #f06ba8 30%,  #78bae6 65%,  #fff)",
               zIndex: backgrondEffectZindex,
-              borderRadius: "1.5%",
+              borderRadius: "40px",
+              scaleX: backgroundScale,
             }}
           >
             <div
@@ -100,7 +106,7 @@ const Detail = () => {
                 background:
                   "linear-gradient(  255deg,  #f06ba8,  #facb0e 30%,  #78bae6 65%,  #fff)",
                 animation: "bgAnim 5s infinite",
-                borderRadius: "1.5%",
+                borderRadius: "40px",
               }}
             ></div>
           </motion.div>

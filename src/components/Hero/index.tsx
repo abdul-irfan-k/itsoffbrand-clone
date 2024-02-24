@@ -46,7 +46,7 @@ const Hero = () => {
         start: "0% top",
         end: "bottom 50%",
         scrub: 1,
-        markers: true,
+        // markers: true,
       },
     });
     t2.to(hSelector(".word1"), { x: "-30%", y: "-50%" });
