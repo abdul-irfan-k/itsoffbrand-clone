@@ -10,6 +10,45 @@ const Hero = () => {
     if (!element) return;
 
     const hSelector = gsap.utils.selector(element);
+
+    const initial = gsap.timeline({});
+    initial
+      .to(hSelector(".f1"), { y: "0%" }, "<")
+      .to(hSelector(".f2"), { y: "0%" })
+      .to(hSelector(".f3"), { y: "0%" })
+      .to(hSelector(".f4"), { y: "0%" })
+      .to(hSelector(".f5"), { y: "0%" })
+      .to(hSelector(".f6"), { y: "0%" })
+      .to(hSelector(".f7"), { y: "0%" })
+      .to(hSelector(".f8"), { y: "0%" })
+      .to(hSelector(".f9"), { y: "0%" });
+
+    initial
+      .to(hSelector(".s1"), { y: "0%" }, 0)
+      .to(hSelector(".s2"), { y: "0%" }, 0)
+      .to(hSelector(".s3"), { y: "0%" })
+      .to(hSelector(".s4"), { y: "0%" })
+      .to(hSelector(".s5"), { y: "0%" })
+      .to(hSelector(".s6"), { y: "0%" })
+      .to(hSelector(".s7"), { y: "0%" })
+      .to(hSelector(".s8"), { y: "0%" });
+
+    initial
+      .to(hSelector(".t1"), { y: "0%" }, 0)
+      .to(hSelector(".t2"), { y: "0%" })
+      .to(hSelector(".t3"), { y: "0%" })
+      .to(hSelector(".t4"), { y: "0%" })
+      .to(hSelector(".t5"), { y: "0%" })
+      .to(hSelector(".t6"), { y: "0%" })
+      .to(hSelector(".t7"), { y: "0%" })
+      .to(hSelector(".t8"), { y: "0%" });
+
+    initial
+      .to(hSelector(".word1"), { x: "0%", ease: "power2.out" })
+      .to(hSelector(".word2"), { x: "0%", ease: "power2.out" })
+      .to(hSelector(".word3"), { x: "0%", ease: "power2.out" });
+
+    initial.duration(1).play();
     const t1 = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -60,16 +99,26 @@ const Hero = () => {
     >
       <div className="gap-32 px-32  flex flex-col w-full text-8xl font-semibold">
         <div className="">
-          <div className="word1 gap-4 text flex ">
+          <div className="word1 gap-4 text flex translate-x-[15%] ">
             <Word word="A" />
             <Word
               word="DIFFERENT"
-              characterClassNames={["", "", "", "", "", "f2", "f3", "", "f1"]}
+              characterClassNames={[
+                "f4",
+                "f5",
+                "f7",
+                "f6",
+                "f8",
+                "f2",
+                "f3",
+                "f9",
+                "f1",
+              ]}
             />
           </div>
         </div>
         <div className="text-right ">
-          <div className="word2 flex justify-end ">
+          <div className="word2 flex justify-end translate-x-[-15%] ">
             <Word
               word="CREATIVE"
               characterClassNames={[
@@ -86,7 +135,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="">
-          <div className="word3 text1 ml-20 flex">
+          <div className="word3 text1 ml-20 flex translate-x-[15%]">
             <Word
               word="APPROACH"
               characterClassNames={[
@@ -95,7 +144,7 @@ const Hero = () => {
                 "t2",
                 "t6",
                 "t1",
-                "t6",
+                "t8",
                 "t4",
                 "t7",
               ]}
@@ -122,9 +171,10 @@ const Word = ({ word, characterClassNames }: WordProps) => {
           <div className="overflow-hidden" key={index}>
             <div
               className={
-                !characterClassNames || characterClassNames[index] == undefined
+                "translate-y-[-100%] " +
+                (!characterClassNames || characterClassNames[index] == undefined
                   ? ""
-                  : characterClassNames[index]
+                  : characterClassNames[index])
               }
             >
               {character}

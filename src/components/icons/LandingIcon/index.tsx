@@ -23,16 +23,6 @@ const LandingIcon = () => {
     >
       <g stroke="#A499B3" stroke-width="1">
         <linearGradient id={`animation-1`} x1="0.5" y1="1" x2="0.5" y2="0">
-          {/* <stop offset="100%"  stopColor="red">
-            <animate
-              attributeName="offset"
-              values="-5;1"
-              repeatCount="1"
-              dur="2s"
-              begin="1s"
-
-            />
-          </stop> */}
           <stop offset="100%" stop-color="white">
             <animate
               attributeName="offset"
