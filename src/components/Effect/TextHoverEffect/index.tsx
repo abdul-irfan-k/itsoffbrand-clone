@@ -26,7 +26,7 @@ const TextHoverEffect = ({
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className={"items-center relative flex " + (wordGap ? wordGap : "gap-3")}
+      className={"items-center relative flex  " + (wordGap ? wordGap : "gap-3")}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

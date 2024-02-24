@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import Canvas from "@/components/Canvas";
 import Detail from "@/components/Detail";
 import Footer from "@/components/Footer";
@@ -13,18 +14,16 @@ const Homepage = () => {
     <div className="relative overflow-x-clip">
       <Landing>
         <Header />
-        {/* <h1>three js </h1> */}
         {/* <ThreeScreen /> */}
         {/* <Canvas /> */}
         <Hero />
+        <About />
         {/* <div className="relative block h-[150vh] w-screen bg-[#1d1d1d] mix-blend-screen"></div> */}
         {/* <ProjectContainer /> */}
 
         <Detail />
 
-        {/* <div className="relative block h-[450vh] w-screen bg-[#1d1d1d] text-slate-50 mix-blend-screen"> */}
-        <Footer />
-        {/* </div> */}
+         <Footer />
       </Landing>
     </div>
   );

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body {
+    background: #1d1d1d;
+}
 @keyframes bgAnim {
     0% ,100%{
         opacity: 0;
