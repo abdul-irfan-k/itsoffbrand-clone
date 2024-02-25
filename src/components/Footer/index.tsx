@@ -100,7 +100,7 @@ const Footer = () => {
                   fwa
                 </TextHoverEffect>
               </div>
-              <div className="gap-2 flex items-center">
+              <div className="gap-2 flex items-center ">
                 <TextHoverEffect
                   isContainUnderLineAnimation
                   rightIcon={<FaArrowRight className="text-[14px]" />}

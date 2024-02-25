@@ -1,5 +1,6 @@
 import Video from "@/components/Shared/Video";
 import { MotionValue, motion, useTransform } from "framer-motion";
+import Image from "next/image";
 import React from "react";
 interface project {
   url: string;
@@ -8,123 +9,74 @@ interface project {
 interface ProjectListProps {
   scrollYProgress: MotionValue<number>;
 }
-const projects: Array<project> = [
-  { url: "OFF_siteclips_2.mp4" },
-  { url: "OFF_siteclips_4.mp4" },
-  { url: "OFF_siteclips_5.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_11.mp4" },
-  { url: "OFF_siteclips_13.mp4" },
-  { url: "OFF_siteclips_14.mp4" },
-  { url: "OFF_siteclips_7.mp4" },
-];
+
 
 const ProjectList = ({ scrollYProgress }: ProjectListProps) => {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [0.5, 2]);
   const translateRightSpeed3 = useTransform(
     scrollYProgress,
-    [0, 0.2],
-    ["20%", "180%"]
+    [0, 0.5],
+    ["20%", "220%"]
   );
   const translateRightSpeed2 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["-20%", "90%"]
   );
   const translateRightSpeed1 = useTransform(
     scrollYProgress,
-    [0, 0.4],
+    [0, 0.7],
     ["30%", "80%"]
   );
 
   const translateLeftSpeed3 = useTransform(
     scrollYProgress,
-    [0, 0.3],
-    ["-20%", "-180%"]
+    [0, 0.6],
+    ["-20%", "-220%"]
   );
   const translateLeftSpeed2 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["20%", "-90%"]
   );
   const translateLeftSpeed1 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["-30%", "-80%"]
   );
 
   const translateTopSpeed1 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["-9%", "-80%"]
   );
   const translateTopSpeed2 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["-0%", "-110%"]
   );
   const translateTopSpeed3 = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.6],
     ["-20%", "-140%"]
   );
   const translateBottomSpeed1 = useTransform(
     scrollYProgress,
-    [0.4, 0.5],
+    [0.4, 0.8],
     ["9%", "80%"]
   );
   const translateBottomSpeed2 = useTransform(
     scrollYProgress,
-    [0.4, 0.5],
+    [0.4, 0.8],
     ["0%", "110%"]
   );
   const translateBottomSpeed3 = useTransform(
     scrollYProgress,
-    [0.4, 0.5],
+    [0.4, 0.8],
     ["20%", "140%"]
   );
   const rotateX = useTransform(scrollYProgress, [0, 0.3], [-37, -11]);
-  
+
   const trans = [
     { z: "-1176.66", x: translateRightSpeed1, y: translateTopSpeed2 },
     { z: "-3944.67", x: translateBottomSpeed1, y: translateTopSpeed1 },
@@ -182,7 +134,7 @@ const ProjectList = ({ scrollYProgress }: ProjectListProps) => {
   };
   return (
     <>
-      {projects.map((project, index) => {
+      {new Array(40).fill(null).map((project, index) => {
         return (
           <motion.div
             style={{
@@ -197,14 +149,10 @@ const ProjectList = ({ scrollYProgress }: ProjectListProps) => {
               opacity,
             }}
             transformTemplate={temaptlate}
-            className="rounded-lg overflow-hidden opacity-[0.5]"
+            className="relative rounded-lg overflow-hidden opacity-[0.5] block bg-red-300"
           >
-            <Video
-              src={"/Asset/Video/" + project.url}
-              // autoPlay
-              // muted
-              // loop
-            />
+            
+            <Image alt="image" src={`/Asset/Image/${index}.jpg`} fill />
           </motion.div>
         );
       })}

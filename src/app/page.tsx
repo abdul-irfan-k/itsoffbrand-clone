@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import Landing from "@/components/Landing";
 import ProjectContainer from "@/components/Project";
 import ThreeScreen from "@/components/ThreeScreen";
+import Work from "@/components/Work";
 import React from "react";
 
 const Homepage = () => {
@@ -14,11 +15,9 @@ const Homepage = () => {
     <div className="relative overflow-x-clip">
       <Landing>
         <Header />
-        {/* <ThreeScreen /> */}
-        {/* <Canvas /> */}
         <Hero />
         <About />
-        {/* <div className="relative block h-[150vh] w-screen bg-[#1d1d1d] mix-blend-screen"></div> */}
+        <Work />
         {/* <ProjectContainer /> */}
 
         <Detail />
