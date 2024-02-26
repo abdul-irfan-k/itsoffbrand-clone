@@ -1,6 +1,7 @@
 import React from "react";
 import TextHoverEffect from "../Effect/TextHoverEffect";
 import { FaArrowRight } from "react-icons/fa";
+import Navbar from "../NavButton";
 
 const Header = () => {
   return (
@@ -24,6 +25,8 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      <Navbar />
     </div>
   );
 };
