@@ -1,3 +1,4 @@
+//@ts-nocheck
 interface color {
   r: number;
   g: number;

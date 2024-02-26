@@ -134,9 +134,11 @@ const ProjectList = ({ scrollYProgress }: ProjectListProps) => {
   };
   return (
     <>
+    
       {new Array(40).fill(null).map((project, index) => {
         return (
           <motion.div
+          key={index}
             style={{
               transformOrigin: "50% 0%",
               // transform: trans[index],
