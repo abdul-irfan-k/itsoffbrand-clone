@@ -27,7 +27,7 @@ const ProjectContainer = () => {
 
   return (
     <div
-      className="relative w-screen h-[300vh] bg-[#1d1d1d] text-slate-50 flex  items-start  "
+      className="relative w-screen h-[300vh]  bg-[#1d1d1d] text-slate-50 flex  items-start  "
       ref={container}
       style={{ position: "relative" }}
     >

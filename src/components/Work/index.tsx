@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Work = () => {
   return (
-    <div className="mt-40 relative px-5 w-full h-screen  text-neutral-300 uppercase">
+    <div className="mt-40 my-[100vh] relative px-5 w-full h-screen  text-neutral-300 uppercase">
       <div className="sticky top-[10%] flex flex-col">
         <span>featured work</span>
         <div className="mt-2 px-6 py-2 rounded-full border-[1px] border-neutral-500 bg-[#1d1d1d] w-fit">

@@ -6,11 +6,21 @@
 body {
     background: #1d1d1d;
 }
+
 @keyframes bgAnim {
-    0% ,100%{
+
+    0%,
+    100% {
         opacity: 0;
     }
-    50%{
+
+    50% {
         opacity: 1;
+    }
+}
+
+@keyframes rotateX {
+    100% {
+        rotate: 360deg;
     }
 }

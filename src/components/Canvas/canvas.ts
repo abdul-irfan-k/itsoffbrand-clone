@@ -1,41 +1,8 @@
-const items: CanvasCircle[] = [];
-let i = 0;
-
 interface color {
   r: number;
   g: number;
   b: number;
 }
-
-// linear-gradient(
-//   255deg,
-//   #f06ba8,
-//   #facb0e 30%,
-//   #78bae6 65%,
-//   #fff
-// )
-
-// linear-gradient( 255deg, #facb0e, #f06ba8 30%, #78bae6 65%, #fff )
-const colors: color[] = [
-  { r: 240, g: 107, b: 168 }, 
-  { r: 250, g: 203, b: 14 }, 
-  { r: 120, g: 186, b: 230 }, 
-  { r: 240, g: 107, b: 168 }, 
-  { r: 250, g: 203, b: 14 }, 
-  { r: 120, g: 186, b: 230 }, 
-];
-// const colors: color[] = [
-//   { r: 255, g: 0, b: 0 }, // Red
-//   { r: 0, g: 255, b: 0 }, // Green
-//   { r: 0, g: 0, b: 255 }, // Blue
-//   { r: 255, g: 255, b: 0 }, // Yellow
-//   { r: 255, g: 0, b: 255 }, // Magenta
-//   { r: 0, g: 255, b: 255 }, // Cyan
-//   { r: 128, g: 0, b: 128 }, // Purple
-//   { r: 255, g: 165, b: 0 }, // Orange
-//   { r: 0, g: 255, b: 0 }, // Green
-//   { r: 0, g: 0, b: 255 }, // Blue
-// ];
 
 export class CanvasAnimator {
   ctx: CanvasRenderingContext2D;
@@ -43,6 +10,18 @@ export class CanvasAnimator {
   minRadius: number;
   screenWidth: number;
   screenHeight: number;
+
+  rippleCircle;
+
+  items: CanvasCircle[] = [];
+  colors: color[] = [
+    { r: 240, g: 107, b: 168 },
+    { r: 250, g: 203, b: 14 },
+    { r: 120, g: 186, b: 230 },
+    { r: 250, g: 203, b: 14 },
+    { r: 240, g: 107, b: 168 },
+    { r: 120, g: 186, b: 230 },
+  ];
 
   constructor(
     ctx: CanvasRenderingContext2D,
@@ -52,32 +31,55 @@ export class CanvasAnimator {
     this.ctx = ctx;
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
-    this.maxRadius = 300;
+    this.maxRadius = 350;
     this.minRadius = 200;
     this.createCicrles();
     window.requestAnimationFrame(this.animate.bind(this));
+    this.rippleCircle = new RippleEffect(
+      this.screenWidth,
+      this.screenHeight,
+      this.ctx,
+      100
+    );
+  }
+
+  draw() {
+    this.rippleCircle.animate();
   }
 
   createCicrles() {
-    items.splice(0, items.length);
-    for (i = 0; i < 7; i++) {
+    this.items.splice(0, this.items.length);
+    for (let i = 0; i < 6; i++) {
       const item = new CanvasCircle({
-        color: colors[i],
+        color: this.colors[i],
         stageWidth: this.screenWidth,
         stateHeight: this.screenHeight,
         x: Math.random() * this.screenWidth,
         y: Math.random() * this.screenHeight,
       });
       // window.requestAnimationFrame(item.circleAnimate(this.ctx))
-      items.push(item);
+      this.items.push(item);
     }
   }
   animate() {
     window.requestAnimationFrame(this.animate.bind(this));
     this.ctx.clearRect(0, 0, this.screenWidth, this.screenHeight);
-    items.forEach((elm) => {
+    this.items.forEach((elm) => {
       elm.circleAnimate(this.ctx);
     });
+    // this.draw();
+  }
+
+  resize({maxRadius,minRadius,screenHeight,screenWidth}:{
+    maxRadius: number,
+    minRadius: number,
+    screenWidth: number,
+    screenHeight: number,
+  }) {
+    this.maxRadius = this.maxRadius
+    this.minRadius = this.minRadius
+    this.screenHeight = this.screenHeight
+    this.screenWidth = this.screenWidth
   }
 }
 
@@ -161,8 +163,60 @@ class CanvasCircle {
       `rgba(${this.color.r},${this.color.g},${this.color.b},0)`
     );
     ctx.fillStyle = g;
+    // ctx.fillStyle = `rgb(${this.color.r},${this.color.g},${this.color.b})`;
     ctx.arc(this.x, this.y, 500, 0, Math.PI * 2, false);
     // ctx.arc(100, 75, 50, 0, 2 * Math.PI,false);
     ctx.fill();
+  }
+}
+
+class RippleEffect {
+  width: number;
+  height: number;
+  ctx: CanvasRenderingContext2D;
+  radius: number;
+
+  constructor(
+    width: number,
+    height: number,
+    ctx: CanvasRenderingContext2D,
+    radius: number
+  ) {
+    this.width = width;
+    this.height = height;
+    this.ctx = ctx;
+    this.radius = radius;
+  }
+
+  draw() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "rgba(255,255,255,0.05)";
+    // this.ctx.fillStyle = "#ffffff";
+    // this.ctx.fillStyle = "black";
+    this.ctx.lineWidth = 5;
+    this.ctx.shadowBlur = 250;
+    // this.ctx.shadowColor = `rgba(0,0,0,0.5)`;
+    this.ctx.shadowColor = `red`;
+    this.ctx.shadowOffsetX = 0;
+    this.ctx.shadowOffsetY = 0;
+    // this.ctx.arc(this.width / 2, this.height / 2, this.r, 0, Math.PI * 2, false);
+    this.ctx.arc(
+      this.width / 2,
+      this.height / 2,
+      this.radius,
+      0,
+      Math.PI * 2,
+      false
+    );
+    this.ctx.closePath();
+    this.ctx.fill();
+  }
+  animate() {
+    // window.requestAnimationFrame(this.animate.bind(this))
+    if (this.radius == 300) this.radius = 0;
+    else this.radius += 1;
+    // this.ctx.clearRect(0, 0, this.width, this.height);
+    this.draw();
+    // console.log("animate")
   }
 }
