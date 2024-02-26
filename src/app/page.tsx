@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Awwards from "@/components/Awwards";
 import Canvas from "@/components/Canvas";
 import Detail from "@/components/Detail";
 import Footer from "@/components/Footer";
@@ -23,7 +24,7 @@ const Homepage = () => {
         <About />
         <Work />
         <ProjectContainer />
-
+<Awwards />
         <Detail />
 
          <Footer />
