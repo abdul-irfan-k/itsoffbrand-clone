@@ -56,7 +56,7 @@ const Canvas = () => {
   );
 
   return (
-    <div className="fixed w-full h-screen flex items-center z-[20]  ">
+    <div className="fixed w-full h-screen flex items-center z-[-1]  ">
       <motion.div
         className="relative w-[40%]   aspect-square block  rounded-full overflow-hidden  mx-auto rotate"
         ref={canvasContainerRef}

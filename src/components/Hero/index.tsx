@@ -94,7 +94,7 @@ const Hero = () => {
   }, [heroContainer.current]);
   return (
     <div
-      className=" h-[100vh] w-screen bg-[#1d1d1d] text-slate-50 flex items-center"
+      className=" h-[100vh] w-screen   flex items-center mix-blend-difference"
       ref={heroContainer}
     >
       <div className="gap-32 px-32  flex flex-col w-full text-8xl font-semibold">

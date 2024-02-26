@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="fixed bottom-5 flex items-end w-full h-auto uppercase ">
       <motion.div
-        className="absolute right-5 gap-2 w-[3.3%] aspect-square  bg-[#1d1d1d]  rounded-md flex flex-col items-center  justify-center z-[60]"
+        className="absolute right-5 mr-[0.25%] gap-2 w-[3%] aspect-square  bg-[#1d1d1d]  rounded-md flex flex-col items-center  justify-center z-[60]"
         onClick={() => setIsNavButtonClicked(!isNavButtonClicked)}
         variants={{
           active: {
@@ -31,22 +31,25 @@ const Navbar = () => {
           variants={navButtonAnimationVariants}
           animate={isNavButtonClicked ? "active" : "notActive"}
           custom={45}
+          initial="notActive"
         ></motion.span>
         <motion.span
           className="absolute w-[60%] h-[3px] bg-neutral-200 rounded-md block"
           animate={isNavButtonClicked ? "activeMiddleElement" : "notActive"}
           variants={navButtonAnimationVariants}
+          initial="notActive"
         ></motion.span>
         <motion.span
           className="absolute w-[60%] h-[3px] bg-neutral-200 rounded-md block"
           animate={isNavButtonClicked ? "active" : "notActive"}
           custom={-45}
           variants={navButtonAnimationVariants}
+          initial="notActive"
         ></motion.span>
       </motion.div>
 
       <motion.div
-        className="absolute px-5 py-5 right-5  bottom-0 w-[16%]  block border-[1px] text-neutral-200 border-neutral-500 bg-[#1d1d1d  "
+        className="absolute px-5 py-5 right-5  bottom-0 w-[16%] rounded-md  block border-[1px] bg-[#1d1d1d] text-neutral-200 border-neutral-500 bg-[#1d1d1d  "
         variants={navBarWidthAnimation}
         initial="initial"
         animate={isNavButtonClicked ? "active" : "notActive"}

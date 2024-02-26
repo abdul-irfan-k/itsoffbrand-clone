@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="px-20 py-5 w-full bg-[#1d1d1d] text-slate-50 ">
+    <div className="px-20 py-5 w-full bg-[#1d1d1d] ">
       <div className=" py-40 gap-20 flex ">
         <div className="w-[60%] gap-2 flex flex-col text-8xl font-medium">
           <span>HOW ABOUT</span>

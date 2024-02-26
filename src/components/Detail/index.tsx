@@ -52,7 +52,7 @@ const Detail = () => {
 
   return (
     <div
-      className=" w-full   bg-[#1d1d1d] text-slate-50 "
+      className=" w-full    text-slate-50 "
       ref={detailContainerRef}
     >
       <div className=" w-full flex items-center justify-center mix-blend-lighten">

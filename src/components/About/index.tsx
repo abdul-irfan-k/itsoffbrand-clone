@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const About = () => {
   return (
-    <div className=" py-20  text-neutral-200">
+    <div className=" py-20   mix-blend-difference">
       <div className="flex flex-col w-fit mx-auto uppercase text-6xl">
         <span className="mx-auto">with emotion+</span>
         <span>innovation, we push the </span>
