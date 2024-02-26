@@ -32,7 +32,7 @@ export class CanvasAnimator {
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
     this.maxRadius = 350;
-    this.minRadius = 200;
+    this.minRadius = 250;
     this.createCicrles();
     window.requestAnimationFrame(this.animate.bind(this));
     this.rippleCircle = new RippleEffect(

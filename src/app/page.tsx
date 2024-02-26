@@ -12,7 +12,6 @@ import ThreeScreen from "@/components/ThreeScreen";
 import Work from "@/components/Work";
 import React from "react";
 
-
 const Homepage = () => {
   return (
     <div className="relative overflow-x-clip">
@@ -24,10 +23,10 @@ const Homepage = () => {
         <About />
         <Work />
         <ProjectContainer />
-<Awwards />
+        <Awwards />
         <Detail />
 
-         <Footer />
+        <Footer />
       </Landing>
     </div>
   );

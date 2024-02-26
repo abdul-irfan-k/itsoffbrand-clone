@@ -149,7 +149,7 @@ const ProjectList = ({ scrollYProgress }: ProjectListProps) => {
               opacity,
             }}
             transformTemplate={temaptlate}
-            className="relative rounded-lg overflow-hidden opacity-[0.5] block bg-red-300"
+            className="relative rounded-lg overflow-hidden opacity-[0.5] block "
           >
             
             <Image alt="image" src={`/Asset/Image/${index}.jpg`} fill />
