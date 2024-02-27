@@ -17,7 +17,7 @@ const Homepage = () => {
     <div className="relative overflow-x-clip">
       <Landing>
         {/* <ThreeCircle /> */}
-        <Canvas />
+        {/* <Canvas /> */}
         <Header />
         <Hero />
         <About />

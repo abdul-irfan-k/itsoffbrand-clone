@@ -3,7 +3,11 @@ import React, { useRef, useEffect } from "react";
 import { CanvasAnimator } from "./canvas";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-const Canvas = () => {
+interface CanvasRef {
+  svgPathRef: React.RefObject<SVGPathElement>;
+  isPageLoaded: boolean;
+}
+const Canvas = ({ svgPathRef, isPageLoaded }: CanvasRef) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
@@ -56,25 +60,31 @@ const Canvas = () => {
   );
 
   return (
-    <div className="fixed w-full h-screen flex items-center z-[-1]  ">
-      <motion.div
-        className="relative w-[40%]   aspect-square block  rounded-full overflow-hidden  mx-auto rotate"
-        ref={canvasContainerRef}
-        style={{ scale, x: translateX, y: translateY }}
-      >
-        <div
-          className=" w-full h-full rounded-full block "
-          style={{ animation: "rotateX 10s infinite linear" }}
+    <div className="fixed top-0 left-0 w-screen h-screen flex items-center   ">
+        <motion.div
+          className="relative w-[40vw]  aspect-square block  rounded-full overflow-hidden  mx-auto rotate z-[-1]"
+          // style={{ scale, x: translateX, y: translateY }}
+          style={{
+            scale: isPageLoaded ? scale : "0.1",
+            x: isPageLoaded ? translateX : "30%",
+            y: isPageLoaded ? translateY : "30.5%",
+            // transition: "all 1.5s",
+          }}
+          ref={canvasContainerRef}
         >
-          <canvas
-            ref={canvasRef}
-            onClick={(e) => {
-              console.log("e", scrollYProgress);
-            }}
-          />
-          ;
-        </div>
-      </motion.div>
+          <div
+            className=" w-full h-full rounded-full block "
+            style={{ animation: "rotateX 10s infinite linear" }}
+          >
+            <canvas
+              ref={canvasRef}
+              // onClick={(e) => {
+              //   console.log("e", scrollYProgress);
+              // }}
+            />
+            ;
+          </div>
+        </motion.div>
     </div>
   );
 };
