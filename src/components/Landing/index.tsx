@@ -28,13 +28,13 @@ const Landing = ({ children }: LandingProps) => {
 
   return (
     <div >
-      <div className="z-10">{isPageLoaded && children}</div>
+      <div className="z-10">{children}</div>
       {/* {!isPageLoaded && ( */}
       <div className="relative z-[-10]">
         <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center  ">
           <div className="w-[30%] aspect-square ">
-            <Canvas svgPathRef={svgPathRef} isPageLoaded={isPageLoaded} />
-            <motion.div
+            <Canvas />
+            {/* <motion.div
               variants={{
                 active: {
                   opacity: 1,
@@ -47,7 +47,7 @@ const Landing = ({ children }: LandingProps) => {
               animate={!isPageLoaded ? "active" : "notActive"}
             >
               <LandingIcon ref={svgPathRef} />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>

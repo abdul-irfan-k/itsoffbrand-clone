@@ -3,11 +3,8 @@ import React, { useRef, useEffect } from "react";
 import { CanvasAnimator } from "./canvas";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-interface CanvasRef {
-  svgPathRef: React.RefObject<SVGPathElement>;
-  isPageLoaded: boolean;
-}
-const Canvas = ({ svgPathRef, isPageLoaded }: CanvasRef) => {
+
+const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +21,8 @@ const Canvas = ({ svgPathRef, isPageLoaded }: CanvasRef) => {
     const test = new CanvasAnimator(
       ctx,
       canvasContainerRef.current.getBoundingClientRect().width,
-      canvasContainerRef.current.getBoundingClientRect().height
+      canvasContainerRef.current.getBoundingClientRect().width,
+      // canvasContainerRef.current.getBoundingClientRect().height
     );
 
     return () => {};
@@ -65,16 +63,15 @@ const Canvas = ({ svgPathRef, isPageLoaded }: CanvasRef) => {
           className="relative w-[40vw]  aspect-square block  rounded-full overflow-hidden  mx-auto rotate z-[-1]"
           // style={{ scale, x: translateX, y: translateY }}
           style={{
-            scale: isPageLoaded ? scale : "0.1",
-            x: isPageLoaded ? translateX : "30%",
-            y: isPageLoaded ? translateY : "30.5%",
-            // transition: "all 1.5s",
+            scale: scale,
+            x: translateX , 
+            y: translateY 
           }}
           ref={canvasContainerRef}
         >
           <div
-            className=" w-full h-full rounded-full block "
-            style={{ animation: "rotateX 10s infinite linear" }}
+            className="relative w-[40vw] aspect-square rounded-full  "
+            // style={{ animation: "rotateX 10s infinite linear" }}
           >
             <canvas
               ref={canvasRef}
