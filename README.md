@@ -26,7 +26,7 @@ This project is a **clone** of the [Itsoffbard website](https://www.itsoffbrand.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/abdul-irfan-k/makepill-website.git
+   git clone https://github.com/abdul-irfan-k/itsoffbrand-clone.git
    cd itsoffbard-clone
 
 2. Install dependencies:
