@@ -39,4 +39,9 @@ This project is a **clone** of the [Itsoffbard website](https://www.itsoffbrand.
    npm install
    ```
 
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
 ## 🤝 Thank you
